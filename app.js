@@ -3,6 +3,7 @@ const selectMenu = document.querySelectorAll('select');
 const showCurrentTime = document.getElementById('currentTime');
 const setAlarmBtn = document.querySelector('button');
 const alermSetContainer = document.querySelector('.alarm-set-content');
+const clockImage = document.getElementById('clock-image');
 
 let userAlarmTime;
 let isAlarmSet = false;
@@ -43,6 +44,7 @@ setInterval(() => {
      s = s < 10 ? "0" + s : s;
 
      if(userAlarmTime == `${h}:${m} ${ampm}`){
+          clockImage.classList.add('active-shake');
           alarmSound.play()
           alarmSound.loop = true;
      }
@@ -63,6 +65,7 @@ function setAlarm() {
           selectMenu[0][0].selected = true;
           selectMenu[1][0].selected = true;
           selectMenu[2][0].selected = true;
+          clockImage.classList.remove('active-shake');
           return isAlarmSet = false;
      }
 
